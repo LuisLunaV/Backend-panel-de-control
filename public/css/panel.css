@@ -1,0 +1,77 @@
+@import url(inicial.css);
+/* utilis */
+.fuente-ubuntu {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.centrar-column-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/* HeaderNav */
+.nombre-logo {
+  color: red;
+  font-size: clamp(2rem, 5rem, 2.5rem);
+  text-shadow: -3px 2px 0 white, -14px 7px 0 rgba(0, 0, 0, 0.5);
+  margin-left: 2rem;
+}
+.header-contenedor {
+  overflow: hidden;
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-principal {
+  width: 15%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.header-principal a {
+  font-weight: 700;
+  color: #d7dbdd;
+}
+
+.header-principal a:hover {
+  color: #fff;
+}
+/* contenedor principal */
+.container-aside-main{
+  height: 100%;
+display: flex;
+flex-direction: row;
+}
+/* AsideNav */
+
+.aside-contenedor {
+  padding-top: 1rem;
+  width: 15%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.aside-nav-a {
+  list-style: none;
+}
+.aside-nav-a a {
+  color: white;
+  text-decoration: none;
+}
+
+.aside-nav-a a:hover{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Main */
+.main-contenedor{
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}

@@ -1,0 +1,61 @@
+.div-inicial {
+  border: 1px solid #ffc107;
+  border-radius: 5.5px;
+  display: flex;
+  flex-direction: row;
+}
+
+.div-inicial:hover {
+  transition: all 0.2s ease;
+  border: 1px solid #ffc107;
+  border-radius: 5.5px;
+  background-color: #3b2400;
+}
+
+.div-inicial label{
+  color: #ffc107;
+  transition: all 0.2s ease;
+}
+
+.div-inicial:hover label {
+  transition: all 0.2s ease;
+  color: #fff;
+}
+
+.div-inicial i{
+  cursor: pointer;
+  color: #ffc107;
+  transition: all 0.2s ease;
+}
+
+.div-inicial:hover i {
+  transition: all 0.2s ease;
+  color: #fff;
+}
+
+.div-inicial input[type="radio"]{
+    appearance: none; /* Quita el estilo por defecto */
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ffc107;
+    border-radius: 50%;
+    outline: none;
+  }
+
+.div-inicial input[type="radio"]:checked {
+  background-color: #ffc107;
+  -webkit-animation: puls 0.7s forwards;
+  animation: pulse 0.7s forwards;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}

@@ -1,10 +1,16 @@
 import { Sequelize } from 'sequelize';
-import { NAME_DB, HOST_DB, PASS_DB, USER_DB } from '../config/envs';
+// import { NAME_DB, HOST_DB, PASS_DB, USER_DB } from '../config/envs';
+import { 
+    MYSQLHOST,
+MYSQLDATABASE,
+MYSQLUSER,
+MYSQLPASSWORD
+ } from '../config/envs';
 
 
 
-const db = new Sequelize( NAME_DB as string, USER_DB as string, PASS_DB as string,{
-            host:     HOST_DB,
+const db = new Sequelize( MYSQLDATABASE as string, MYSQLUSER as string, MYSQLPASSWORD as string,{
+            host:     MYSQLHOST,
             dialect: 'mysql'
         });
 

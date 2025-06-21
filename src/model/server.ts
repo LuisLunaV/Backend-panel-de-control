@@ -29,7 +29,7 @@ export class Server{
     this.app.use(express.json());
     this.app.use(cookieParser());
     this.app.use(cors({
-        origin: [CLIENT_BASE_URL as string || 'http://192.168.100.11:5173','http://localhost:5173'], 
+        origin: [CLIENT_BASE_URL as string || 'http://192.168.100.11:5173','https://luislunav.up.railway.app'], 
         methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
         // credentials: true, 
         optionsSuccessStatus: 200, 

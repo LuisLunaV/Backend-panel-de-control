@@ -41,7 +41,7 @@ export class Server{
     this.app.use( this.pathsWeb.panel, contactoRouter);
 
     
-    this.app.listen(this.port,()=>{
+    this.app.listen(this.port,'0.0.0.0',()=>{
         console.log(`Servidor levantado en puerto: ${this.port}`)
     });
    }

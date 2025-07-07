@@ -6,6 +6,7 @@ class Contacto extends Model<IContacto>{
     declare Msg_Id:number;
     declare Msg_email:string;
     declare Msg_texto:string;
+    declare Msg_status:boolean;
 }
 
 const sequelize = db;
@@ -23,11 +24,16 @@ Contacto.init({
         type: DataTypes.STRING,
         allowNull:false
     }
+    ,
+    Msg_status:{
+        type: DataTypes.BOOLEAN,
+        allowNull:false
+    }
 },{
     sequelize,
     modelName: 'Contacto',
     tableName: 'Mensajes',
-    // timestamps: false,
+    timestamps: false,
 });
 
 export{

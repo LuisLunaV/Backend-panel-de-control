@@ -4,6 +4,7 @@ interface IMessage {
 }
 
 interface IContactoService{
+    getMessages():Promise<any>;
     createMessage( message:IMessage ):Promise<any>;
 }
 
@@ -14,6 +15,7 @@ interface IRespContact{
     Msg_texto: string;
     updatedAt: Date;
     createdAt: Date;
+    Msg_status: boolean;
 }
 
 export{

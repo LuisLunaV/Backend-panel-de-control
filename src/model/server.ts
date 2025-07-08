@@ -29,8 +29,8 @@ export class Server{
     this.app.use(express.json());
     this.app.use(cookieParser());
     this.app.use(cors({
-        origin: [CLIENT_BASE_URL as string || 'http://localhost:5173'], 
-        methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
+        origin: [CLIENT_BASE_URL as string, 'http://localhost:5173'], 
+        methods: ['GET','HEAD','PUT','PATCH','POST','DELETE', 'OPTIONS'],
         credentials: true, 
         optionsSuccessStatus: 200, 
     }));

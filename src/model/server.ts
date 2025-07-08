@@ -36,6 +36,7 @@ export class Server{
         optionsSuccessStatus: 200, 
     }));
 
+        this.app.options('*', cors());
     // Usar las rutas definidas    
     this.app.use( this.pathsWeb.auth, authRouter);
     this.app.use( this.pathsWeb.panel, homeRouter);

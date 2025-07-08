@@ -31,6 +31,7 @@ export class Server{
     this.app.use(cors({
         origin: [CLIENT_BASE_URL as string, 'http://localhost:5173'], 
         methods: ['GET','HEAD','PUT','PATCH','POST','DELETE', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
         credentials: true, 
         optionsSuccessStatus: 200, 
     }));

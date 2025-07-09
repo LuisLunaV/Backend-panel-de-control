@@ -30,13 +30,11 @@ export class Server{
     this.app.use(cookieParser());
     this.app.use(cors({
         origin: [CLIENT_BASE_URL as string, 'http://localhost:5173'], 
-        methods: ['GET','HEAD','PUT','PATCH','POST','DELETE', 'OPTIONS'],
-        allowedHeaders: ['Content-Type', 'Authorization'],
+        methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
         credentials: true, 
         optionsSuccessStatus: 200, 
     }));
 
-        this.app.options('*', cors());
     // Usar las rutas definidas    
     this.app.use( this.pathsWeb.auth, authRouter);
     this.app.use( this.pathsWeb.panel, homeRouter);

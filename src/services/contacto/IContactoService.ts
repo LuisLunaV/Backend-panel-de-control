@@ -5,7 +5,9 @@ interface IMessage {
 
 interface IContactoService{
     getMessages():Promise<any>;
+    getMessageSelect(id:number):Promise<any>;
     createMessage( message:IMessage ):Promise<any>;
+    eliminarMensaje(id: number):Promise<any>;
 }
 
 
@@ -18,9 +20,18 @@ interface IRespContact{
     Msg_status: boolean;
 }
 
+interface IRespMessageId {
+  Msg_Id: number;
+  Msg_email: string;
+  Msg_texto: string;
+  Msg_status: boolean;
+}
+
+
 export{
     IMessage,
     IContactoService,
-    IRespContact
+    IRespContact,
+    IRespMessageId
 }
 

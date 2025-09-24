@@ -1,48 +1,53 @@
-import express from 'express';
-import {  authRouter, homeRouter, contactoRouter } from '../routes/index.routes';
-import { dbConnection } from '../database/config.db';
-import cors from 'cors';
-import cookieParser from 'cookie-parser'
-import { CLIENT_BASE_URL } from '../config/envs'
+import express from "express";
+import {
+  authRouter,
+  homeRouter,
+  contactoRouter,
+  portafolioRouter,
+} from "../routes/index.routes";
+import { dbConnection } from "../database/config.db";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import { CLIENT_BASE_URL } from "../config/envs";
 
-export class Server{
-    private readonly app = express();
-    private readonly port:number;
-    private pathsWeb = {
-        auth: '/auth',
-        panel: '/panel'
-    }
-   
-    constructor( port:number ){
-        this.port = port;
-        this.connectDB();
-    }
+export class Server {
+  private readonly app = express();
+  private readonly port: number;
+  private pathsWeb = {
+    auth: "/auth",
+    panel: "/panel",
+  };
 
-     private async connectDB(){
-                await dbConnection();
-    } 
+  constructor(port: number) {
+    this.port = port;
+    this.connectDB();
+  }
 
-    
-    public start(){
+  private async connectDB() {
+    await dbConnection();
+  }
 
+  public start() {
     //Middleware
     this.app.use(express.json());
     this.app.use(cookieParser());
-    this.app.use(cors({
-        origin: [CLIENT_BASE_URL as string || 'http://localhost:5173'], 
-        methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
-        credentials: true, 
-        optionsSuccessStatus: 200, 
-    }));
+    this.app.use(
+      cors({
+        origin: ["https://luislunav.up.railway.app","http://localhost:5173"],
+        methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+        credentials: true,
+        optionsSuccessStatus: 200,
+      })
+    );
 
-    // Usar las rutas definidas    
-    this.app.use( this.pathsWeb.auth, authRouter);
-    this.app.use( this.pathsWeb.panel, homeRouter);
-    this.app.use( this.pathsWeb.panel, contactoRouter);
+    // Usar las rutas definidas
+    this.app.use(this.pathsWeb.auth, authRouter);
+    this.app.use(this.pathsWeb.panel, homeRouter);
+    this.app.use(this.pathsWeb.panel, contactoRouter);
+    this.app.use(this.pathsWeb.panel, portafolioRouter);
 
-    
-    this.app.listen(this.port,'0.0.0.0',()=>{
-        console.log(`Servidor levantado en puerto: ${this.port}`)
+    this.app.listen(this.port, "0.0.0.0", () => {
+      console.log(`Servidor levantado en puerto: ${this.port}`);
     });
-   }
+  }
 }

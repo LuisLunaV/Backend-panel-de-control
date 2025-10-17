@@ -40,4 +40,5 @@ try {
 }
 })
 
+router.post('/api/v1/logout', AuthController.logout)
 export default router;

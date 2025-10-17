@@ -4,6 +4,7 @@ import {
   homeRouter,
   contactoRouter,
   portafolioRouter,
+  netwebRouter
 } from "../routes/index.routes";
 import { dbConnection } from "../database/config.db";
 import cors from "cors";
@@ -16,6 +17,7 @@ export class Server {
   private pathsWeb = {
     auth: "/auth",
     panel: "/panel",
+    netweb: "/netweb",
   };
 
   constructor(port: number) {
@@ -33,7 +35,7 @@ export class Server {
     this.app.use(cookieParser());
     this.app.use(
       cors({
-        origin: ["https://luislunav.up.railway.app","http://localhost:5173"],
+        origin: ["https://luislunav.up.railway.app","http://localhost:5173","https://netweb.up.railway.app"],
         methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
         credentials: true,
         optionsSuccessStatus: 200,
@@ -45,6 +47,9 @@ export class Server {
     this.app.use(this.pathsWeb.panel, homeRouter);
     this.app.use(this.pathsWeb.panel, contactoRouter);
     this.app.use(this.pathsWeb.panel, portafolioRouter);
+
+    //Ruta que sera consumida por netweb para envio de mesajes
+    this.app.use(this.pathsWeb.netweb, netwebRouter);
 
     this.app.listen(this.port, "0.0.0.0", () => {
       console.log(`Servidor levantado en puerto: ${this.port}`);

@@ -7,9 +7,10 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon",
+    "dev": "nodemon src/app.ts",
     "build": "rimraf ./dist && tsc",
-    "start": "npm run build && node dist/app.js"
+    "start": "node dist/app.js",
+    "prestart": "npm run build"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.8",

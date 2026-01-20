@@ -1,10 +1,11 @@
 import { Sequelize } from 'sequelize';
-import { MYSQLDATABASE, MYSQLHOST, MYSQLPASSWORD, MYSQLUSER } from '../config/envs';
+import { MYSQLDATABASE, MYSQLHOST, MYSQLPASSWORD, MYSQLPORT, MYSQLUSER } from '../config/envs';
 
 
 
 const db = new Sequelize( MYSQLDATABASE as string, MYSQLUSER as string, MYSQLPASSWORD as string,{
             host:     MYSQLHOST,
+            port: MYSQLPORT ? Number(MYSQLPORT) :3306,
             dialect: 'mysql'
         });
 

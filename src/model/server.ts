@@ -9,7 +9,7 @@ import {
 import { dbConnection } from "../database/config.db";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import { CLIENT_BASE_URL } from "../config/envs";
+
 
 export class Server {
   private readonly app = express();

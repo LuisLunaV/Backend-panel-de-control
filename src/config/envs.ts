@@ -10,7 +10,8 @@ NAME_DB,
 CLIENT_BASE_URL,
 JWT_SEED
 } = process.env;
-   
+   console.log('hola mundo')
+   console.log(JWT_SEED)
 export{
 PORT,
 HOST_DB,

@@ -69,7 +69,7 @@ export class AuthController{
        res.cookie('x-token', token, {
         httpOnly: true,
         secure: true,
-        sameSite: 'strict',
+        sameSite: 'none',
         maxAge: 2 * 60 * 60 * 1000 
        })
 
@@ -86,4 +86,22 @@ export class AuthController{
         });
       }
     }
+
+    static logout( req:Request, res:Response ):void{   
+        try{
+            res.clearCookie('x-token',{
+            httpOnly: true,
+            secure: true,
+            sameSite: 'none'
+        });
+        res.status(200).json({
+            message:'Logout ok',
+            redirect:'/login'
+        }); 
+        } catch (error) {
+            res.status(500).json({
+                'Erro':`Internal server error. ${ error }`
+            });
+        }
+          }
 }

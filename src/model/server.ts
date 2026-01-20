@@ -35,7 +35,7 @@ export class Server {
     this.app.use(cookieParser());
     this.app.use(
       cors({
-        origin: ["https://luislunav.up.railway.app","http://localhost:5173","https://netweb.up.railway.app"],
+        origin: ["https://luislunav.up.railway.app","https://netweb.up.railway.app"],
         methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
         credentials: true,
         optionsSuccessStatus: 200,

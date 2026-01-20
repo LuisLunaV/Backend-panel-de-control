@@ -1,29 +1,22 @@
 import dotenv from 'dotenv';
-
-if (process.env.NODE_ENV !== 'production') {
-  dotenv.config();
-}
+dotenv.config({path: '.env'});
 
 const {
-  PORT,
-  HOST_DB,
-  USER_DB,
-  PASS_DB,
-  NAME_DB,
-  CLIENT_BASE_URL,
-  JWT_SEED
+MYSQLPORT,
+MYSQLHOST,
+MYSQLDATABASE,
+MYSQLPASSWORD,
+MYSQLUSER,
+CLIENT_BASE_URL,
+JWT_SEED
 } = process.env;
-
-if (!JWT_SEED) {
-  throw new Error('JWT_SEED no está definido');
+   
+export{
+MYSQLPORT,
+MYSQLHOST,
+MYSQLDATABASE,
+MYSQLPASSWORD,
+MYSQLUSER,
+CLIENT_BASE_URL,
+JWT_SEED
 }
-
-export {
-  PORT,
-  HOST_DB,
-  USER_DB,
-  PASS_DB,
-  NAME_DB,
-  CLIENT_BASE_URL,
-  JWT_SEED
-};

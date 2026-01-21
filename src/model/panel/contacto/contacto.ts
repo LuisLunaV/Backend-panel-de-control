@@ -34,7 +34,7 @@ Contacto.init({
     sequelize,
     modelName: 'Contacto',
     tableName: 'Mensajes',
-    timestamps: false,
+    // timestamps: false, //Nesecitamos las fechas de creacion por eso comentamos esta linea.
 });
 
 export{

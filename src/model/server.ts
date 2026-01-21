@@ -33,23 +33,19 @@ export class Server {
   }
 
   public start() {
-
-      //Middleware
+    //Middleware
     this.app.use(express.json());
     this.app.use(cookieParser());
-    this.app.use(cors());
-    // this.app.use(
-    //   cors({
-    //     origin: [
-    //       this.sitioUno,
-    //       this.sitioDos
-    //     ],
-    //     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
-    //      allowedHeaders: ["Content-Type"],
-    //     // credentials: true,
-    //     optionsSuccessStatus: 204,
-    //   }),
-    // );
+    // this.app.use(cors());
+    this.app.use(
+      cors({
+        origin: [this.sitioUno, this.sitioDos],
+        methods: "GET,POST,PUT,PATCH,DELETE,OPTIONS",
+        allowedHeaders: "Content-Type,Authorization",
+        credentials: true,
+        // optionsSuccessStatus: 204,
+      }),
+    );
 
     // Usar las rutas definidas
     this.app.use(this.pathsWeb.auth, authRouter);

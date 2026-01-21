@@ -6,10 +6,9 @@ const router = Router();
 router.get("/api/v1/bandeja", async function (req: Request, res: Response): Promise<any> {
   try {
     const isOnline = await Contacto.findOne();
-    console.log(isOnline);
+ 
     if (!isOnline) {
       return res.status(404).json({
-        msg:'Fallo conexion a la bd',
         status: false,
       });
     }

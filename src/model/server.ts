@@ -46,9 +46,10 @@ export class Server {
           this.sitioUno,
           this.sitioDos
         ],
-        methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+        methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
+         allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
         credentials: true,
-        optionsSuccessStatus: 200,
+        optionsSuccessStatus: 204,
       }),
     );
 
@@ -61,7 +62,7 @@ export class Server {
     //Ruta que sera consumida por netweb para envio de mesajes
     this.app.use(this.pathsWeb.netweb, netwebRouter);
 
-    this.app.listen(this.port, "0.0.0.0", () => {
+    this.app.listen(this.port, () => {
       console.log(`Servidor levantado en puerto: ${this.port}`);
     });
   }

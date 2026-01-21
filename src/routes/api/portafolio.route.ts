@@ -9,6 +9,7 @@ router.get("/api/v1/bandeja", async function (req: Request, res: Response): Prom
     
     if (!isOnline) {
       return res.status(404).json({
+        msg:'Fallo conexion a la bd',
         status: false,
       });
     }

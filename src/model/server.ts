@@ -4,24 +4,27 @@ import {
   homeRouter,
   contactoRouter,
   portafolioRouter,
-  netwebRouter
+  netwebRouter,
 } from "../routes/index.routes";
 import { dbConnection } from "../database/config.db";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
-
 export class Server {
   private readonly app = express();
   private readonly port: number;
+  private readonly sitioUno: string;
+  private readonly sitioDos: string;
   private pathsWeb = {
     auth: "/auth",
     panel: "/panel",
     netweb: "/netweb",
   };
 
-  constructor(port: number) {
+  constructor(port: number, sitioUno: string, sitioDos: string) {
     this.port = port;
+    this.sitioUno = sitioUno;
+    this.sitioDos = sitioDos;
     this.connectDB();
   }
 
@@ -35,11 +38,14 @@ export class Server {
     this.app.use(cookieParser());
     this.app.use(
       cors({
-        origin: ["https://luislunav.up.railway.app","https://netweb.up.railway.app"],
+        origin: [
+          this.sitioUno,
+          this.sitioDos
+        ],
         methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
         credentials: true,
         optionsSuccessStatus: 200,
-      })
+      }),
     );
 
     // Usar las rutas definidas

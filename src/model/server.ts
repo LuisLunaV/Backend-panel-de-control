@@ -40,10 +40,10 @@ export class Server {
     this.app.use(
       cors({
         origin: [this.sitioUno, this.sitioDos],
-        methods: "GET,POST,PUT,PATCH,DELETE,OPTIONS",
-        allowedHeaders: "Content-Type,Authorization",
+        methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
+        allowedHeaders: ["Content-Type"],
         credentials: true,
-        // optionsSuccessStatus: 204,
+        optionsSuccessStatus: 204,
       }),
     );
 

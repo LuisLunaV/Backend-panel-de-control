@@ -33,6 +33,10 @@ export class Server {
   }
 
   public start() {
+
+    console.log(this.sitioUno)
+    console.log(this.sitioDos)
+
     //Middleware
     this.app.use(express.json());
     this.app.use(cookieParser());

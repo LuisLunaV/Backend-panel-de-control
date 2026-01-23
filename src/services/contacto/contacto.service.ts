@@ -40,7 +40,7 @@ export class ContactoServices implements IContactoService {
       const contacto = await Contacto.create(message);
       return contacto;
     } catch (error) {
-      throw new Error("No sepudo crear el mensaje");
+      throw new Error("No sepudo crear el mensaje. Intentalo nuevamente mas tarde. :(");
     }
   }
 

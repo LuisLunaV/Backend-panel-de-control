@@ -2,7 +2,7 @@ import { Router, Request, Response} from 'express';
 import { ContactoController } from '../../controller/contacto.controller';
 import { validateJWT } from '../../middlewares/validate-jwt';
 import { validateProperties } from '../../middlewares/validate-properties';
-import { validarMensaje } from '../../helpers/validadores-generales';
+import { validarCaracteresMaliciosos } from '../../helpers/validadores-generales';
 import { check, param } from 'express-validator';
 import { ContactoServices } from '../../services/contacto/contacto.service';
 
@@ -23,7 +23,8 @@ router.get('/api/v1/bandeja/contenido-msg/:id',
 
 router.post('/api/v1/form-messages/send', [
     check('Msg_email', 'El email no es valido').isEmail(),
-    check('Msg_texto', 'EL mensaje no debe estar vacio').notEmpty().custom( validarMensaje ),
+    check('Msg_asunto', 'EL asunto no debe estar vacio').notEmpty().custom((e)=> validarCaracteresMaliciosos(e,'asunto') ),
+    check('Msg_texto', 'EL mensaje no debe estar vacio').notEmpty().custom((e)=> validarCaracteresMaliciosos(e, 'mensaje') ),
     validateProperties
 ], contactoController.addMessage);
 

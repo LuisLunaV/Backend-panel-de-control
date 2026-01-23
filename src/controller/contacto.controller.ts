@@ -20,7 +20,10 @@ export class ContactoController {
     }
   };
 
-  public getMessageId = async (req: Request, res: Response): Promise<void | any> => {
+  public getMessageId = async (
+    req: Request,
+    res: Response,
+  ): Promise<void | any> => {
     try {
       const id: number = Number(req.params.id);
       const mensaje = await this.contactoService.getMessageSelect(id);
@@ -28,14 +31,14 @@ export class ContactoController {
       res.status(200).json({
         status: 200,
         msg: "ok",
-        mensaje
+        mensaje,
       });
-    } catch ( error ) {
-      if( error instanceof Error ){
-     return res.status(404).json({
-        status:404,
-        msg:error.message
-      });
+    } catch (error) {
+      if (error instanceof Error) {
+        return res.status(404).json({
+          status: 404,
+          msg: error.message,
+        });
       }
       res.status(500).json({
         Error: `Internal server error. ${error}`,
@@ -47,7 +50,7 @@ export class ContactoController {
     try {
       const body = req.body;
 
-      await this.contactoService.createMessage(body);
+      const resp = await this.contactoService.createMessage(body);
 
       res.status(201).json({
         status: 201,
@@ -55,30 +58,42 @@ export class ContactoController {
         msg: "El mensaje se ha enviado correctamente.",
       });
     } catch (error) {
+      if( error instanceof Error){
+        res.status(400).json({
+        status: 400,
+        error: error.name,
+        message: error.message,
+      })
+      }else{
       res.status(500).json({
         Error: `Internal server error. ${error}`,
       });
+      }
+
     }
   };
 
-  public deleteMessage = async( req: Request, res: Response ):Promise<void|any>=>{
+  public deleteMessage = async (
+    req: Request,
+    res: Response,
+  ): Promise<void | any> => {
     try {
-      const id:number = Number(req.params.id);
-      const resp = await this.contactoService.eliminarMensaje( id );
+      const id: number = Number(req.params.id);
+      const resp = await this.contactoService.eliminarMensaje(id);
 
       res.status(200).json({
-        status:200,
-        resp
-      })
+        status: 200,
+        resp,
+      });
     } catch (error) {
-      if( error instanceof Error ){
-       return res.status(400).json({
-          Error:error.message
-        })
+      if (error instanceof Error) {
+        return res.status(400).json({
+          Error: error.message,
+        });
       }
       res.status(500).json({
         Error: `Internal server error. ${error}`,
       });
     }
-  }
+  };
 }

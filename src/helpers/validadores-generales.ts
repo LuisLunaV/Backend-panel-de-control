@@ -8,26 +8,27 @@ const validarEmail = (email: string) => {
   }
 };
 
-const validarMensaje = (mensaje: string):boolean => {
+
+const validarCaracteresMaliciosos = (mensaje: string, tipo:string):boolean => {
+  console.log(mensaje)
   const caracteresProhibidos= /[<>;'"()]/g;
   const estiquetasMaliciosas =
     /<(?:script|iframe|object|embed|link|style)\b[^>]*>/i;
   const isMaliciusTarget = estiquetasMaliciosas.test(mensaje);
 
   if (isMaliciusTarget) {
-    throw new Error("El mensaje no debe contener etiquetas HTML maliciosas");
+    throw new Error(`El ${tipo} no debe contener etiquetas HTML maliciosas`);
   }
 
   const isMaliciusMessage = caracteresProhibidos.test(mensaje);
 
     if (isMaliciusMessage) {
-    throw new Error("El mensaje no debe contener caracteres maliciosos");
+    throw new Error(`El ${tipo} no debe contener caracteres maliciosos`);
   }
 
 return true;
 };
-
 export{
   validarEmail,
-  validarMensaje
+  validarCaracteresMaliciosos
 }
